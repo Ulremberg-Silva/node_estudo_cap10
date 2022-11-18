@@ -1,21 +1,15 @@
-var mysql = require("mysql2");
-
-const dbConfig = {
-  host: "localhost",
-  user: "livro",
-  password: "livro123",
-  database: "livro",
-};
-
+var mysql = require('mysql2');
 function connect() {
   var connection = mysql.createConnection({
-    dbConfig,
+    host: "localhost",
+    user: "livro",
+    password: "livro123",
+    database: "livro",
   });
   // Conecta no banco de dados
   connection.connect();
   return connection;
-};
-
+}
 module.exports = {
   connect,
 };

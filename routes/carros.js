@@ -8,10 +8,6 @@ router.get("/", function (req, res) {
   });
 });
 
-router.get("/*", function (req, res) {
-  res.status(404).json({ msg: "Rota não localizada" })
-});
-
 router.get("/:id", function (req, res) {
   let id = req.params.id;
   CarroDB.getCarroById(id, function (carro) {
