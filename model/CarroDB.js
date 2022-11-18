@@ -22,6 +22,10 @@ class CarroDB {
     let query = connection.query(sql, function (error, results, fields) {
       if (error) throw error;
 
+      if (results.length === 0) {
+        console.log("Nenhum carro encontrado.");
+      }
+
       callback(results);
     });
     console.log(query.sql);
@@ -31,16 +35,17 @@ class CarroDB {
 
   static getCarroById(id, callback) {
     let connection = connectDb.connect();
+    let carro;
 
     let sql = "select id,nome,tipo from carro where id=?";
     let query = connection.query(sql, id, function (error, results, fields) {
       if (error) throw error;
       if (results.length == 0) {
         console.log("Nenhum carro encontrado.");
-        return;
+        carro = [];
+      } else {
+        carro = results[0];
       }
-
-      let carro = results[0];
 
       callback(carro);
     });
