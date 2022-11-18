@@ -1,13 +1,13 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const carros = require('./routes/carros')
+const carrosRota = require('./routes/carros')
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
-app.use('/api/carros', carros );
+app.use('/api/carros', carrosRota );
 
 // Inicia o servidor
 const server = app.listen(3000, "localhost", function () {

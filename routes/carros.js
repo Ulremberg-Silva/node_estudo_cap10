@@ -8,6 +8,10 @@ router.get("/", function (req, res) {
   });
 });
 
+router.get("/*", function (req, res) {
+  res.status(404).json({ msg: "Rota não localizada" })
+});
+
 router.get("/:id", function (req, res) {
   let id = req.params.id;
   CarroDB.getCarroById(id, function (carro) {
@@ -17,7 +21,7 @@ router.get("/:id", function (req, res) {
 
 router.delete("/:id", function (req, res) {
   let id = req.params.id;
-  console.log("deletar arro " + id);
+  console.log("deletar carro " + id);
   CarroDB.deleteById(id, function (affectedRows) {
     res.json({ msg: "Carro deletado com sucesso." });
   });
